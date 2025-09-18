@@ -34,8 +34,6 @@ fun CategoriasItem(
     categoria: CategoriasModel,
     modifier: Modifier = Modifier
 ) {
-    val isDarkTheme = isSystemInDarkTheme()
-
     Card(
         modifier = modifier
             .width(160.dp)
