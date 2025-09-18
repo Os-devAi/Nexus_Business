@@ -1,5 +1,6 @@
 package com.nexusdev.nexusbusiness.components
 
+import android.annotation.SuppressLint
 import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -12,10 +13,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -81,13 +86,13 @@ fun NegocioItem(
                         contentScale = ContentScale.Crop
                     )
 
-                    // Badge de calificación superpuesto en la imagen
-//                    RatingBadge(
-//                        rating = taxi.calificacion ?: 0.0,
-//                        modifier = Modifier
-//                            .align(Alignment.TopEnd)
-//                            .padding(8.dp)
-//                    )
+//                     Badge de calificación superpuesto en la imagen
+                    RatingBadge(
+                        rating = negocio.calificacion ?: 0.0,
+                        modifier = Modifier
+                            .align(Alignment.TopEnd)
+                            .padding(8.dp)
+                    )
                 }
                 Spacer(modifier = Modifier.height(12.dp))
             }
@@ -120,6 +125,35 @@ fun NegocioItem(
                     )
                 }
             }
+        }
+    }
+}
+
+@SuppressLint("DefaultLocale")
+@Composable
+private fun RatingBadge(rating: Double, modifier: Modifier = Modifier) {
+    Card(
+        modifier = modifier,
+        colors = CardDefaults.cardColors(containerColor = Color.Black.copy(alpha = 0.7f)),
+        shape = RoundedCornerShape(16.dp)
+    ) {
+        Row(
+            modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Icon(
+                imageVector = Icons.Default.Star,
+                contentDescription = "Calificación",
+                tint = Color(0xFFFFC107),
+                modifier = Modifier.size(14.dp)
+            )
+            Spacer(modifier = Modifier.width(4.dp))
+            Text(
+                text = String.format("%.1f", rating),
+                color = Color.White,
+                fontSize = 12.sp,
+                fontWeight = FontWeight.Medium
+            )
         }
     }
 }

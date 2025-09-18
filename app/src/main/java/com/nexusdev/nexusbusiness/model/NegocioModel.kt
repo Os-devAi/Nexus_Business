@@ -13,4 +13,5 @@ data class NegocioModel(
     val servicios: String? = null,
     val telefono: String? = null,
     val telefonoSegundo: String? = null,
+    val calificacion: Double? = 0.0
 )
