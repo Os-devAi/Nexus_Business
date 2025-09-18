@@ -1,13 +1,11 @@
 package com.nexusdev.nexusbusiness.ui.screens.detalles
 
 import android.Manifest
-import android.R.attr.rating
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.net.Uri
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -36,7 +34,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.SegmentedButtonDefaults.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -97,7 +94,7 @@ fun DetallesScreen(
         ) {
             AsyncImage(
                 model = negocios[0].imagenUrl,
-                contentDescription = "Imagen del taxi",
+                contentDescription = "Imagen del negocio",
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(240.dp),
@@ -129,7 +126,7 @@ fun DetallesScreen(
                         fontSize = 18.sp,
                         fontWeight = FontWeight.Medium
                     )
-                    Text("(${reviews.size ?: 0})", fontSize = 14.sp)
+                    Text("(${reviews.size}) reseñas", fontSize = 14.sp)
                 }
 
                 Divider(modifier = Modifier.padding(vertical = 8.dp))
@@ -243,7 +240,7 @@ fun DetallesScreen(
 
                     if (reviews.isEmpty()) {
                         Text(
-                            "Aún no hay reseñas para este taxi",
+                            "Aún no hay reseñas para este negocio",
                             color = Color.Gray,
                             modifier = Modifier.padding(vertical = 16.dp)
                         )
